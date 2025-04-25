@@ -1,8 +1,4 @@
-Below is a sample `README.md` file for the CostNest project. You can copy this into your project's root so that users and developers have full documentation, technical details, and an architecture overview using Mermaid diagrams.
 
----
-
-```markdown
 # CostNest — Advanced Expense Tracker Chrome Extension
 
 CostNest is a feature-rich Chrome extension designed to track and analyze your online shopping expenses. Incorporating secure PIN-lock access with auto-lock after inactivity, it empowers you to add, edit, sort, and filter expenses with ease. Interactive data visualizations (pie charts and line charts) provide insights into spending by category and monthly trends. The extension also supports data backup/restore, CSV export, and a monthly budgeting feature via an intuitive Material Design user interface.
@@ -123,18 +119,118 @@ Contributions are welcome! If you have ideas or improvements to enhance CostNest
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+Below is a Markdown-formatted explanation along with the GitHub Actions workflow YAML code. You can copy this into a file (for example, `.github/workflows/build.yml`) in your repository at [https://github.com/la-b-ib/CostNest](https://github.com/la-b-ib/CostNest).
 
 ---
 
-## Contact
 
-For any questions, issues, or feature requests, please open an issue on the [GitHub repository](https://github.com/yourusername/CostNest).
+# GitHub Actions Workflow for CostNest
 
+This GitHub Actions workflow is designed to build and package the CostNest Chrome extension. It automatically triggers on pushes and pull requests to the `main` branch (as well as on manual dispatch) and performs the following steps:
+
+1. **Checkout the Repository:**  
+   Uses the official checkout action to access all project files.
+
+2. **Setup Node.js:**  
+   Optionally installs Node.js (useful if you add npm-based tooling or scripts in the future).
+
+3. **Install Dependencies:**  
+   If a `package.json` file exists (for linting or testing), it runs `npm install`.
+
+4. **Build and Package the Extension:**  
+   Packages the extension files (such as `manifest.json`, `popup.html`, `style.css`, `popup.js`, and icons) into a ZIP archive.
+
+5. **Upload the Package Artifact:**  
+   The zipped package is uploaded as an artifact for easy download and deployment.
+
+Below is the YAML configuration for the workflow:
+
+```yaml
+name: Build and Package CostNest Extension
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Optional: Setup Node.js for future enhancements
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "No package.json found, skipping dependency installation."
+          fi
+
+      - name: Build and Package Extension
+        run: |
+          # Create a ZIP archive of the extension files.
+          # Adjust the file list as necessary to include all required assets.
+          zip -r CostNest.zip manifest.json popup.html style.css popup.js icons/* -x "*.git*" ".github/*"
+          
+      - name: Upload Package Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: CostNest-package
+          path: CostNest.zip
 ```
 
 ---
 
-This README provides a comprehensive overview—including a project description, features summary, technical stack, installation instructions, and an architecture diagram using Mermaid. Feel free to modify and expand sections as needed for your repository. Enjoy building and optimizing CostNest!
+### How This Workflow Works
+
+- **Trigger Configuration:**  
+  The workflow runs on any push or pull request targeting the `main` branch, and you can also manually trigger it.
+
+- **Build Job Steps:**
+  - **Checkout:**  
+    Retrieves your repository files.
+  
+  - **Setup Node.js:**  
+    Installs Node.js version 16 (optional, in case your workflow in the future requires Node.js).
+  
+  - **Install Dependencies:**  
+    Checks for a `package.json` file and installs dependencies if it exists.
+  
+  - **Build & Package:**  
+    Uses the `zip` command to package all necessary extension files into `CostNest.zip`. Adjust the parameters as needed.
+  
+  - **Upload Artifact:**  
+    Saves the created ZIP as an artifact named `CostNest-package`.
+
+
+
+
+---
+
+
+
+## Contact
+
+- **Developer**: Labib Bin Shahed
+- **Email**: [labib-x@protonmail.com](mailto:labib-x@protonmail.com)  
+- **GitHub**: [github.com/la-b-ib](https://github.com/la-b-ib)
+
+---
+
+## License
+
+This project is licensed under the terms of the MIT license. See the [LICENSE](LICENSE) file for details.
+
+---
+
