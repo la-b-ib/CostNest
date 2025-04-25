@@ -1,8 +1,4 @@
-Below is a complete example for a `CONTRIBUTING.md` file in Markdown format. You can copy this file into your repository's root directory to help guide contributors.
 
----
-
-```markdown
 # Contributing to CostNest
 
 Thank you for your interest in contributing to CostNest! We welcome contributions that help improve the project, whether it's through bug fixes, new features, documentation enhancements, or performance optimizations.
@@ -78,9 +74,3 @@ This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participatin
 
 ---
 
-Thank you for contributing to CostNest! Every pull request and issue opened helps us make CostNest more robust and user-friendly.
-```
-
----
-
-This file outlines the contribution process, technical guidelines, and expectations for code quality, ensuring that future contributions are clear and well-coordinated. Enjoy contributing to CostNest!
