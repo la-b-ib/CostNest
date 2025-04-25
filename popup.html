@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CostNest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Materialize CSS + Material Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- PIN Lock Screen -->
+  <div id="lock-screen" class="container">
+    <div class="card">
+      <div class="card-content">
+        <h4 class="card-title center-align">CostNest - Secure Access</h4>
+        <div class="input-field">
+          <input id="pin-input" type="password" maxlength="4" placeholder="Enter 4-digit PIN">
+          <label for="pin-input">PIN</label>
+        </div>
+        <div class="center-align">
+          <button id="pin-submit" class="btn waves-effect waves-light"><i class="material-icons left">lock_open</i>Unlock</button>
+        </div>
+        <p id="pin-error" class="red-text center-align"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Application Screen -->
+  <div id="main-screen" class="container" style="display:none;">
+    <!-- Tabs for Expenses, Dashboard, and Settings -->
+    <div class="row">
+      <div class="col s12">
+         <ul class="tabs">
+           <li class="tab col s4"><a href="#expenses-tab" class="active">Expenses</a></li>
+           <li class="tab col s4"><a href="#dashboard-tab">Dashboard</a></li>
+           <li class="tab col s4"><a href="#settings-tab">Settings</a></li>
+         </ul>
+      </div>
+
+      <!-- Expenses Tab -->
+      <div id="expenses-tab" class="col s12">
+         <!-- Add/Edit Expense Card -->
+         <div class="card">
+           <div class="card-content">
+             <span id="expense-form-title" class="card-title">Add Expense</span>
+             <form id="item-form">
+                <div class="input-field">
+                  <input id="item-name" type="text" required>
+                  <label for="item-name">Item Name</label>
+                </div>
+                <div class="input-field">
+                  <input id="item-cost" type="number" step="0.01" required>
+                  <label for="item-cost">Cost</label>
+                </div>
+                <div class="input-field">
+                  <input id="item-category" type="text" required>
+                  <label for="item-category">Category</label>
+                </div>
+                <div class="input-field">
+                  <input id="item-date" type="text" class="datepicker" required>
+                  <label for="item-date">Date</label>
+                </div>
+                <button id="expense-submit-btn" type="submit" class="btn waves-effect waves-light">
+                  <i class="material-icons left">add</i><span id="expense-submit-text">Add Expense</span>
+                </button>
+                <button id="expense-cancel-btn" type="button" class="btn grey lighten-1" style="display:none; margin-left: 10px;">
+                  <i class="material-icons left">clear</i>Cancel
+                </button>
+             </form>
+           </div>
+         </div>
+         <!-- Filter & Sort Controls -->
+         <div class="card">
+            <div class="card-content">
+              <span class="card-title">Expenses List</span>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="filter-input" type="text">
+                  <label for="filter-input">Filter by Item or Category</label>
+                </div>
+                <div class="input-field col s6">
+                  <select id="sort-select">
+                    <option value="date-asc" selected>Date (Asc)</option>
+                    <option value="date-desc">Date (Desc)</option>
+                    <option value="cost-asc">Cost (Asc)</option>
+                    <option value="cost-desc">Cost (Desc)</option>
+                    <option value="category-asc">Category (A-Z)</option>
+                    <option value="category-desc">Category (Z-A)</option>
+                  </select>
+                  <label>Sort By</label>
+                </div>
+              </div>
+              <ul id="item-list" class="collection"></ul>
+              <h5>Total Spending: $<span id="total-spending">0.00</span></h5>
+            </div>
+         </div>
+      </div>
+
+      <!-- Dashboard Tab -->
+      <div id="dashboard-tab" class="col s12">
+         <!-- Monthly Budget Usage -->
+         <div class="card" id="budget-progress-card">
+           <div class="card-content">
+             <span class="card-title">Monthly Budget Usage</span>
+             <div class="progress">
+               <div class="determinate" style="width: 0%" id="budget-progress-bar"></div>
+             </div>
+             <p>Budget: $<span id="monthly-budget">0</span> | Spent: $<span id="budget-spent">0</span></p>
+           </div>
+         </div>
+         <div class="card">
+           <div class="card-content">
+             <span class="card-title">Spending by Category</span>
+             <canvas id="expense-pie-chart" width="400" height="300"></canvas>
+           </div>
+         </div>
+         <div class="card">
+           <div class="card-content">
+             <span class="card-title">Monthly Spending Trend</span>
+             <canvas id="expense-line-chart" width="400" height="300"></canvas>
+           </div>
+         </div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div id="settings-tab" class="col s12">
+         <div class="card">
+           <div class="card-content">
+             <span class="card-title">Settings</span>
+             <div class="switch">
+               <label>
+                 Light
+                 <input type="checkbox" id="dark-mode-toggle">
+                 <span class="lever"></span>
+                 Dark
+               </label>
+             </div>
+             <br>
+             <button id="export-csv" class="btn waves-effect waves-light">
+               <i class="material-icons left">file_download</i>Export as CSV
+             </button>
+             <br><br>
+             <button id="backup-data" class="btn waves-effect waves-light">
+               <i class="material-icons left">cloud_upload</i>Backup Data (JSON)
+             </button>
+             <br><br>
+             <button id="restore-data" class="btn waves-effect waves-light">
+               <i class="material-icons left">cloud_download</i>Restore Data (JSON)
+             </button>
+             <!-- Hidden file input for restore -->
+             <input type="file" id="restore-file-input" accept="application/json" style="display:none;">
+             <br><br>
+             <button id="change-pin" class="btn waves-effect waves-light">
+               <i class="material-icons left">lock</i>Change PIN
+             </button>
+             <br><br>
+             <button id="clear-all" class="btn red waves-effect waves-light">
+               <i class="material-icons left">delete_forever</i>Clear All Expenses
+             </button>
+             <br><br>
+             <button id="set-budget" class="btn waves-effect waves-light">
+               <i class="material-icons left">attach_money</i>Set Monthly Budget
+             </button>
+             <br><br>
+             <button id="lock-back" class="btn red waves-effect waves-light">
+               <i class="material-icons left">lock_outline</i>Lock Extension
+             </button>
+           </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clear All Expenses Modal -->
+  <div id="clear-all-modal" class="modal">
+    <div class="modal-content">
+      <h4>Clear All Expenses</h4>
+      <p>Are you sure you want to clear all expenses? This action cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" id="confirm-clear-all" class="modal-close waves-effect waves-green btn-flat">Yes, clear all</a>
+      <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+  </div>
+
+  <!-- Monthly Budget Modal -->
+  <div id="budget-modal" class="modal">
+    <div class="modal-content">
+      <h4>Set Monthly Budget</h4>
+      <div class="input-field">
+         <input id="budget-input" type="number" step="0.01">
+         <label for="budget-input">Monthly Budget ($)</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" id="save-budget" class="modal-close waves-effect waves-green btn-flat">Save</a>
+      <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+  </div>
+
+  <!-- Materialize JS and our App Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
