@@ -1,12 +1,8 @@
-# CostNest - Professional Expense Tracking Chrome Extension
+# CostNest <a href=""><img align="right" width="150" height="150" src="https://raw.githubusercontent.com/la-b-ib/CostNest/main/preview/gif/budgeting.gif"></a>
 
-**Developer:** Labib Bin Shahed  
-**Version:** 1.0.0  
-**License:** MIT  
+**CostNest is an enterprise-grade Chrome extension engineered for comprehensive expense tracking and financial analysis. Built with modern web technologies and security best practices, it provides organizations and individuals with robust tools for managing online shopping expenses, budget monitoring, and financial data visualization.**
 
-## Overview
-
-CostNest is an enterprise-grade Chrome extension engineered for comprehensive expense tracking and financial analysis. Built with modern web technologies and security best practices, it provides organizations and individuals with robust tools for managing online shopping expenses, budget monitoring, and financial data visualization.
+<hr>
 
 ## Key Features
 
