@@ -28,6 +28,8 @@
 - **OCR Integration** - Receipt scanning and automatic expense entry capabilities
 - **Browser Integration** - Seamless integration with Chrome's context menu and tab system
 
+<hr>
+
 ## Installation Guide
 
 ### Production Deployment
@@ -65,6 +67,7 @@
    - Click the CostNest extension icon
    - Complete the initial PIN setup process
    - Configure your preferred settings and currency options
+<hr>
 
 ## User Guide
 
@@ -119,6 +122,8 @@
 - **CSV Export**: 
   - Generate detailed expense reports in CSV format
   - Compatible with popular spreadsheet and accounting software
+
+<hr>
 
 ## Technical Architecture
 
@@ -192,7 +197,6 @@ flowchart TB
 
 ### Chrome Extension Permissions
 
-The extension requires the following browser permissions for full functionality:
 
 | Permission | Purpose | Security Impact |
 |------------|---------|-----------------|
@@ -216,6 +220,8 @@ The extension requires the following browser permissions for full functionality:
 - GDPR compliance through data minimization and user control
 - Industry-standard encryption protocols
 - Transparent data handling practices
+
+<hr>
 
 ## Troubleshooting and Support
 
@@ -266,13 +272,17 @@ The extension requires the following browser permissions for full functionality:
 - Periodic restart of Chrome browser to clear memory leaks
 - Keep extension updated to latest version for optimal performance
 
-## 🤝 Contributing
+<hr>
+
+##  Contributing
 
 We welcome contributions! Please feel free to:
 - Report bugs
 - Suggest new features
 - Submit pull requests
 - Improve documentation
+
+<hr>
 
 ## 📄 License
 
