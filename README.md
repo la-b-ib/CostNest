@@ -1,6 +1,7 @@
 # CostNest <a href=""><img align="right" width="150" height="150" src="https://raw.githubusercontent.com/la-b-ib/CostNest/main/preview/gif/budgeting.gif"></a>
 
 **CostNest is an enterprise-grade Chrome extension engineered for comprehensive expense tracking and financial analysis. Built with modern web technologies and security best practices, it provides organizations and individuals with robust tools for managing online shopping expenses, budget monitoring, and financial data visualization.**
+**CostNest - Your Smart Shopping Companion** 🛍️💰
 
 <hr>
 
@@ -27,6 +28,16 @@
 - **Smart Notifications** - Context-aware alerts for spending patterns and budget thresholds
 - **OCR Integration** - Receipt scanning and automatic expense entry capabilities
 - **Browser Integration** - Seamless integration with Chrome's context menu and tab system
+
+<hr>
+
+## Extention Preview
+
+<p align="left">
+  <img src="https://raw.githubusercontent.com/la-b-ib/CostNest/main/preview/image/desktop.png" width="32%" />
+  <img src="https://raw.githubusercontent.com/la-b-ib/CostNest/main/preview/image/desktop%20(1).png" width="32%" />
+  <img src="https://raw.githubusercontent.com/la-b-ib/CostNest/main/preview/image/desktop%20(2).png" width="32%" />    
+</p>
 
 <hr>
 
@@ -274,29 +285,33 @@ flowchart TB
 
 <hr>
 
-##  Contributing
+## Project Documentation
 
-We welcome contributions! Please feel free to:
-- Report bugs
-- Suggest new features
-- Submit pull requests
-- Improve documentation
+<div style="display: flex; gap: 10px; margin: 15px 0; align-items: center; flex-wrap: wrap;">
 
+[![License](https://img.shields.io/badge/License-See_FILE-007EC7?style=for-the-badge&logo=creativecommons)](LICENSE)
+[![Security](https://img.shields.io/badge/Security-Policy_%7C_Reporting-FF6D00?style=for-the-badge&logo=owasp)](SECURITY.md)
+[![Contributing](https://img.shields.io/badge/Contributing-Guidelines-2E8B57?style=for-the-badge&logo=git)](CONTRIBUTING.md)
+[![Code of Conduct](https://img.shields.io/badge/Code_of_Conduct-Community_Standards-FF0000?style=for-the-badge&logo=opensourceinitiative)](CODE_OF_CONDUCT.md)
+
+</div>
 <hr>
 
-## 📄 License
+## Contact Information
 
-This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Support
 
-For support, feature requests, or bug reports, please contact:
-- **Developer:** Labib Bin Shahed
-- **Email:** [Your Email]
-- **GitHub:** [Your GitHub Profile]
+  
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:labib.45x@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/la-b-ib)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/la-b-ib/)
+[![Portfolio](https://img.shields.io/badge/Website-0A5C78?style=for-the-badge&logo=internet-explorer&logoColor=white)](https://la-b-ib.github.io/)
 
----
 
-**Made with ❤️ by Labib Bin Shahed**
 
-*CostNest - Your Smart Shopping Companion* 🛍️💰
+
+
+
+
+
+<hr>
