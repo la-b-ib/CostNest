@@ -1,251 +1,230 @@
+# CostNest - Smart Expense Tracker Chrome Extension
 
-# CostNest — Advanced Expense Tracker Chrome Extension
+**Developer:** Labib Bin Shahed
 
-CostNest is a feature-rich Chrome extension designed to track and analyze your online shopping expenses. Incorporating secure PIN-lock access with auto-lock after inactivity, it empowers you to add, edit, sort, and filter expenses with ease. Interactive data visualizations (pie charts and line charts) provide insights into spending by category and monthly trends. The extension also supports data backup/restore, CSV export, and a monthly budgeting feature via an intuitive Material Design user interface.
+CostNest is a secure Chrome extension designed to track and analyze online shopping expenses with advanced features including PIN-lock security, interactive data visualizations, and intelligent expense management.
 
----
+## 🚀 Features
 
-## Features
+### Core Features
+- **🔐 Secure PIN-Lock Access** - Protect your financial data with PIN authentication
+- **💰 Expense Management** - Track and categorize your expenses effortlessly
+- **📊 Interactive Data Visualizations** - Beautiful charts powered by Chart.js
+- **💾 Data Backup and Restore** - Secure your data with backup/restore functionality
+- **📄 CSV Export** - Export your data for external analysis
+- **🎯 Monthly Budgeting** - Set and track monthly spending goals
+- **🎨 Material Design UI** - Modern interface with glassmorphism effects
 
-- **Secure Access:**  
-  - PIN Lock system with default PIN ("1234") and in-app PIN change.
-  - Auto-lock after 60 seconds of inactivity.
-  
-- **Expense Management:**  
-  - Add, edit, and delete expenses with fields for item, cost, category, and date.
-  - Advanced sorting (by date, cost, or category) and debounced filtering.
-  
-- **Analytics & Budgeting:**  
-  - Live data visualization with Chart.js:  
-    - Pie chart (expenses by category).  
-    - Line chart (monthly spending trends).
-  - Monthly budget tracking with a progress bar showing your current month’s spending as a percentage of your set budget.
-  
-- **Data Portability:**  
-  - Backup and restore expense data in JSON.
-  - CSV export functionality.
-  - “Clear All Expenses” feature safeguarded by a confirmation modal.
-  
-- **Modern UI:**  
-  - Built with Materialize CSS and Material Icons for a responsive and sleek Material Design interface.
-  - Use of Materialize modals, tabs, dropdowns, and datepickers.
+### Advanced Features
+- **🔔 Price Drop Alerts** - Get notified when tracked items go on sale
+- **🎯 Spending Goal Setting** - Set and monitor financial targets
+- **🌍 Multi-Currency Support** - Track expenses in different currencies
+- **📱 Receipt Capture and OCR** - Scan receipts for automatic expense entry
+- **🤖 Smart Category Suggestions** - AI-powered expense categorization
+- **🔔 In-App Notifications and Reminders** - Stay on top of your spending
 
----
+## 🛠 Installation
 
-## Demo Architecture
+### Method 1: Developer Mode (Recommended for Testing)
 
-Below is a high-level flow diagram that illustrates the system architecture and key interactions within CostNest:
+1. **Download the Extension**
+   - Clone or download this repository to your local machine
+   - Extract the files to a folder (e.g., `CostNest`)
 
+2. **Open Chrome Extensions Page**
+   - Open Google Chrome
+   - Navigate to `chrome://extensions/`
+   - Or go to Menu → More Tools → Extensions
+
+3. **Enable Developer Mode**
+   - Toggle the "Developer mode" switch in the top-right corner
+
+4. **Load the Extension**
+   - Click "Load unpacked"
+   - Select the `CostNest` folder containing the extension files
+   - The extension should now appear in your extensions list
+
+5. **Pin the Extension**
+   - Click the puzzle piece icon in the Chrome toolbar
+   - Find "CostNest" and click the pin icon to keep it visible
+
+## 🎯 Getting Started
+
+### First Time Setup
+
+1. **Click the CostNest icon** in your Chrome toolbar
+2. **Set up your PIN** - Choose a secure 4-6 digit PIN for protection
+3. **Configure settings** - Set your preferred currency and categories
+4. **Start tracking** - Begin adding your expenses!
+
+### Adding Expenses
+
+#### Manual Entry
+1. Click the CostNest icon
+2. Enter your PIN
+3. Click "Add Expense"
+4. Fill in the amount, description, and category
+5. Click "Save"
+
+#### Web Page Detection
+1. Visit any e-commerce website
+2. Look for the "Add to CostNest" button on product pages
+3. Click it to automatically capture product information
+4. Review and save the expense
+
+#### Context Menu
+1. Right-click on any price or product link
+2. Select "Add to CostNest" from the context menu
+3. Complete the expense details
+
+### Managing Your Data
+
+#### Viewing Reports
+- Access the dashboard to see spending trends
+- View expenses by category, date, or amount
+- Analyze your spending patterns with interactive charts
+
+#### Setting Budgets
+1. Go to Settings
+2. Click "Set Monthly Budget"
+3. Enter your budget amount
+4. Monitor your progress throughout the month
+
+#### Backup & Export
+- **Backup**: Settings → Backup Data → Download backup file
+- **Restore**: Settings → Restore Data → Upload backup file
+- **CSV Export**: Dashboard → Export → Download CSV
+
+## 🔧 Technical Details
+
+### Built With
+- **Manifest V3** - Latest Chrome extension standard
+- **Chart.js** - Interactive data visualizations
+- **Material Design** - Google's design system
+- **Glassmorphism** - Modern UI effects
+- **Bungee Font** - Distinctive typography
+
+
+
+#### Mermaid File Structure Graph
 ```mermaid
-flowchart TD
-    A[User] -->|Enters PIN| B[Lock Screen]
-    B -- Correct PIN --> C[Main Popup Interface]
-    C --> D[Expenses Tab]
-    C --> E[Dashboard Tab]
-    C --> F[Settings Tab]
-    D -->|Add/Edit/Delete Expense| G[chrome.storage]
-    D -->|Sort & Filter| G
-    E -->|Chart.js Pie & Line Charts| H[Analytics]
-    F -->|Backup/Restore & CSV Export| G
-    F -->|Set Monthly Budget| I[Budget Module]
-    I -->|Progress Bar Update| H
-    F -->|Clear All Expenses| G
+flowchart TB
+    A[CostNest<br/>Chrome Extension] 
+    
+    %% Root Files
+    A --- B[manifest.json<br/>Extension Config]
+    A --- C[popup.html<br/>Main Interface]
+    A --- D[background.js<br/>Service Worker]
+    A --- E[content.js<br/>Content Script]
+    A --- F[README.md<br/>Documentation]
+    
+    %% Styles Folder
+    A --- G[styles/]
+    G --- G1[popup.css<br/>Glassmorphism Styling]
+    
+    %% JavaScript Folder
+    A --- H[js/]
+    H --- H1[auth.js<br/>PIN Authentication]
+    H --- H2[storage.js<br/>Data Management]
+    H --- H3[expenses.js<br/>Expense Handling]
+    H --- H4[charts.js<br/>Data Visualization]
+    H --- H5[chart-fallback.js<br/>Chart Fallbacks]
+    H --- H6[dom-utils.js<br/>DOM Utilities]
+    H --- H7[popup.js<br/>Main Controller]
+    
+    %% Icons Folder
+    A --- I[icons/]
+    I --- I1[icon16.svg<br/>16x16]
+    I --- I2[icon32.svg<br/>32x32]
+    I --- I3[icon48.svg<br/>48x48]
+    I --- I4[icon128.svg<br/>128x128]
+    
+    %% Library Folder
+    A --- J[lib/]
+    J --- J1[chart.min.js<br/>Chart.js Library]
+    
+    %% Styling
+    classDef root fill:#4a90e2,stroke:#2c5282,stroke-width:3px,color:#fff
+    classDef folder fill:#68d391,stroke:#38a169,stroke-width:2px,color:#1a202c
+    classDef config fill:#f6ad55,stroke:#dd6b20,stroke-width:2px,color:#1a202c
+    classDef script fill:#9f7aea,stroke:#6b46c1,stroke-width:2px,color:#fff
+    classDef html fill:#f687b3,stroke:#d53f8c,stroke-width:2px,color:#1a202c
+    classDef css fill:#63b3ed,stroke:#3182ce,stroke-width:2px,color:#1a202c
+    classDef icon fill:#fbb6ce,stroke:#e53e3e,stroke-width:2px,color:#1a202c
+    classDef lib fill:#68d391,stroke:#38a169,stroke-width:2px,color:#1a202c
+    classDef doc fill:#a78bfa,stroke:#7c3aed,stroke-width:2px,color:#fff
+    
+    class A root
+    class G,H,I,J folder
+    class B config
+    class D,E,H1,H2,H3,H4,H5,H6,H7 script
+    class C html
+    class G1 css
+    class I1,I2,I3,I4 icon
+    class J1 lib
+    class F doc
 ```
 
-*This diagram shows the workflow starting with secure access, moving through expense management, analytics, and settings, with data persistence handled by the Chrome Storage API.*
+### Permissions
+The extension requires the following permissions:
+- **storage** - Save your expense data locally
+- **activeTab** - Detect prices on current tab
+- **notifications** - Send spending alerts
+- **contextMenus** - Right-click menu integration
+- **alarms** - Scheduled reminders
+- **host permissions** - Access e-commerce websites for price detection
+
+## 🔒 Privacy & Security
+
+- **Local Storage Only** - All data is stored locally on your device
+- **PIN Protection** - Your data is protected by PIN authentication
+- **No Data Collection** - We don't collect or transmit your personal data
+- **Secure Encryption** - Sensitive data is encrypted using Web Crypto API
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Extension not loading:**
+- Ensure all files are in the correct directory
+- Check that Developer mode is enabled
+- Refresh the extensions page and try again
+
+**PIN not working:**
+- Clear extension data: chrome://extensions → CostNest → Details → Extension options → Reset
+- Set up a new PIN
+
+**Charts not displaying:**
+- Ensure Chart.js is properly loaded
+- Check browser console for JavaScript errors
+- Try refreshing the extension
+
+**Price detection not working:**
+- Ensure the website is supported
+- Check that content scripts are enabled
+- Try refreshing the page
+
+## 🤝 Contributing
+
+We welcome contributions! Please feel free to:
+- Report bugs
+- Suggest new features
+- Submit pull requests
+- Improve documentation
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 📞 Support
+
+For support, feature requests, or bug reports, please contact:
+- **Developer:** Labib Bin Shahed
+- **Email:** [Your Email]
+- **GitHub:** [Your GitHub Profile]
 
 ---
 
-## Technical Stack
+**Made with ❤️ by Labib Bin Shahed**
 
-- **Frontend:**  
-  - HTML5, CSS3, JavaScript (ES6+)
-  - [Materialize CSS](https://materializecss.com/) for Material Design components and responsive layout
-  - Material Icons from Google
-
-- **Visualization:**  
-  - [Chart.js](https://www.chartjs.org/) for interactive pie and line charts
-
-- **Chrome Extension:**  
-  - Manifest V3
-  - Chrome Storage API for persistence
-  - Async programming using Promise-based wrappers (async/await)
-
-- **Utilities:**  
-  - Debounce function for optimizing filter input events
-  - Auto-lock functionality using JavaScript timers
-
----
-
-## Installation
-
-1. **Clone/Download the Repository:**  
-   Download or clone the project folder to your local machine.
-
-2. **Load the Extension in Chrome:**  
-   - Open Chrome and navigate to `chrome://extensions/`
-   - Enable **Developer Mode** (toggle in the upper right)
-   - Click **Load unpacked** and select the project folder (e.g., `CostNest`)
-
-3. **Using the Extension:**  
-   - Click on the CostNest icon in the Chrome toolbar.
-   - Enter the default PIN (`1234`) to unlock the extension.
-   - Start adding, editing, and managing your expenses!
-
----
-
-## Usage & Configuration
-
-- **PIN & Security:**  
-  Upon unlocking with your PIN, you access the main interface. You can change your PIN in the Settings tab.
-
-- **Expense Tab:**  
-  Use the provided form to add expenses with details like name, cost, category, and date. Sorting and filtering options let you view your expenses effortlessly.
-
-- **Dashboard:**  
-  Analyze your spending through interactive charts. The monthly budget progress bar helps visualize your current spending against your set monthly budget.
-
-- **Settings:**  
-  Backup/restore your data, export as CSV, clear all expenses, or set a new monthly budget—all built with intuitive modals.
-
-- **Auto-lock:**  
-  The extension automatically locks after 60 seconds of inactivity on the main screen, reverting to the PIN lock screen.
-
----
-
-## Contributing
-
-Contributions are welcome! If you have ideas or improvements to enhance CostNest, feel free to fork the repository and open a pull request.
-
----
-
-Below is a Markdown-formatted explanation along with the GitHub Actions workflow YAML code. You can copy this into a file (for example, `.github/workflows/build.yml`) in your repository at [https://github.com/la-b-ib/CostNest](https://github.com/la-b-ib/CostNest).
-
----
-
-
-# GitHub Actions Workflow for CostNest
-
-This GitHub Actions workflow is designed to build and package the CostNest Chrome extension. It automatically triggers on pushes and pull requests to the `main` branch (as well as on manual dispatch) and performs the following steps:
-
-1. **Checkout the Repository:**  
-   Uses the official checkout action to access all project files.
-
-2. **Setup Node.js:**  
-   Optionally installs Node.js (useful if you add npm-based tooling or scripts in the future).
-
-3. **Install Dependencies:**  
-   If a `package.json` file exists (for linting or testing), it runs `npm install`.
-
-4. **Build and Package the Extension:**  
-   Packages the extension files (such as `manifest.json`, `popup.html`, `style.css`, `popup.js`, and icons) into a ZIP archive.
-
-5. **Upload the Package Artifact:**  
-   The zipped package is uploaded as an artifact for easy download and deployment.
-
-Below is the YAML configuration for the workflow:
-
-```yaml
-name: Build and Package CostNest Extension
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      # Optional: Setup Node.js for future enhancements
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      - name: Install Dependencies
-        run: |
-          if [ -f package.json ]; then
-            npm install
-          else
-            echo "No package.json found, skipping dependency installation."
-          fi
-
-      - name: Build and Package Extension
-        run: |
-          # Create a ZIP archive of the extension files.
-          # Adjust the file list as necessary to include all required assets.
-          zip -r CostNest.zip manifest.json popup.html style.css popup.js icons/* -x "*.git*" ".github/*"
-          
-      - name: Upload Package Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: CostNest-package
-          path: CostNest.zip
-```
-
----
-
-### How This Workflow Works
-
-- **Trigger Configuration:**  
-  The workflow runs on any push or pull request targeting the `main` branch, and you can also manually trigger it.
-
-- **Build Job Steps:**
-  - **Checkout:**  
-    Retrieves your repository files.
-  
-  - **Setup Node.js:**  
-    Installs Node.js version 16 (optional, in case your workflow in the future requires Node.js).
-  
-  - **Install Dependencies:**  
-    Checks for a `package.json` file and installs dependencies if it exists.
-  
-  - **Build & Package:**  
-    Uses the `zip` command to package all necessary extension files into `CostNest.zip`. Adjust the parameters as needed.
-  
-  - **Upload Artifact:**  
-    Saves the created ZIP as an artifact named `CostNest-package`.
-
-
-
-
----
-
-
-
-## Project Documentation
-
-<div style="display: flex; gap: 10px; margin: 15px 0; align-items: center; flex-wrap: wrap;">
-
-[![License](https://img.shields.io/badge/License-See_FILE-007EC7?style=for-the-badge&logo=creativecommons)](LICENSE)
-[![Security](https://img.shields.io/badge/Security-Policy_%7C_Reporting-FF6D00?style=for-the-badge&logo=owasp)](SECURITY.md)
-[![Contributing](https://img.shields.io/badge/Contributing-Guidelines-2E8B57?style=for-the-badge&logo=git)](CONTRIBUTING.md)
-[![Code of Conduct](https://img.shields.io/badge/Code_of_Conduct-Community_Standards-FF0000?style=for-the-badge&logo=opensourceinitiative)](CODE_OF_CONDUCT.md)
-
-</div>
-
-## Contact Information
-
-
-
-  
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:labib.45x@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/la-b-ib)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/la-b-ib/)
-[![Portfolio](https://img.shields.io/badge/Website-0A5C78?style=for-the-badge&logo=internet-explorer&logoColor=white)](https://la-b-ib.github.io/)
-[![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/la_b_ib_)
-
-
-
-
-
-
----
-
+*CostNest - Your Smart Shopping Companion* 🛍️💰
