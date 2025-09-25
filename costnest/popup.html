@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CostNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee:wght@400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- PIN Lock Screen -->
+        <div id="pin-screen" class="screen">
+            <div class="glass-card pin-card">
+                <div class="header">
+                    <span class="material-icons logo-icon">account_balance_wallet</span>
+                    <h1 class="app-title">CostNest</h1>
+                    <p class="subtitle">Secure Expense Tracker</p>
+                </div>
+                <div class="pin-input-container">
+                    <div class="pin-dots">
+                        <div class="pin-dot"></div>
+                        <div class="pin-dot"></div>
+                        <div class="pin-dot"></div>
+                        <div class="pin-dot"></div>
+                    </div>
+                    <div class="pin-keypad">
+                        <button class="pin-btn" data-digit="1">1</button>
+                        <button class="pin-btn" data-digit="2">2</button>
+                        <button class="pin-btn" data-digit="3">3</button>
+                        <button class="pin-btn" data-digit="4">4</button>
+                        <button class="pin-btn" data-digit="5">5</button>
+                        <button class="pin-btn" data-digit="6">6</button>
+                        <button class="pin-btn" data-digit="7">7</button>
+                        <button class="pin-btn" data-digit="8">8</button>
+                        <button class="pin-btn" data-digit="9">9</button>
+                        <button class="pin-btn clear-btn" data-action="clear">
+                            <span class="material-icons">backspace</span>
+                        </button>
+                        <button class="pin-btn" data-digit="0">0</button>
+                        <button class="pin-btn enter-btn" data-action="enter">
+                            <span class="material-icons">check</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="setup-pin-link">
+                    <button id="setup-pin-btn" class="text-btn">Set up PIN</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="main-screen" class="screen active">
+            <div class="glass-card main-card">
+                <div class="header">
+                    <div class="header-left">
+                        <span class="material-icons logo-icon">account_balance_wallet</span>
+                        <h1 class="app-title">CostNest</h1>
+                    </div>
+                    <div class="header-right">
+                        <button id="settings-btn" class="icon-btn">
+                            <span class="material-icons">settings</span>
+                        </button>
+                        <button id="lock-btn" class="icon-btn">
+                            <span class="material-icons">lock</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <span class="material-icons stat-icon">trending_up</span>
+                        <div class="stat-info">
+                            <span class="stat-label">This Month</span>
+                            <span class="stat-value" id="monthly-total">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons stat-icon">savings</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Budget Left</span>
+                            <span class="stat-value" id="budget-left">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="expense-chart"></canvas>
+                </div>
+
+                <div class="quick-actions">
+                    <button id="add-expense-btn" class="action-btn primary">
+                        <span class="material-icons">add</span>
+                        Add Expense
+                    </button>
+                    <button id="view-all-btn" class="action-btn secondary">
+                        <span class="material-icons">list</span>
+                        View All
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Expense Screen -->
+        <div id="add-expense-screen" class="screen">
+            <div class="glass-card form-card">
+                <div class="header">
+                    <button id="back-to-main" class="icon-btn">
+                        <span class="material-icons">arrow_back</span>
+                    </button>
+                    <h2>Add Expense</h2>
+                </div>
+                <form id="expense-form">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <div class="input-group">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="amount" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="food">Food & Dining</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="transport">Transportation</option>
+                            <option value="bills">Bills & Utilities</option>
+                            <option value="health">Health & Fitness</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <button type="submit" class="action-btn primary full-width">
+                        <span class="material-icons">save</span>
+                        Save Expense
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings-screen" class="screen">
+            <div class="glass-card settings-card">
+                <div class="header">
+                    <button id="back-to-main-settings" class="icon-btn">
+                        <span class="material-icons">arrow_back</span>
+                    </button>
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-list">
+                    <div class="setting-item" id="pin-setting-item">
+                        <span class="material-icons">lock</span>
+                        <span id="pin-setting-text">Set up PIN Protection</span>
+                        <button id="pin-setting-btn" class="icon-btn">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <span class="material-icons">backup</span>
+                        <span>Backup Data</span>
+                        <button id="backup-btn" class="icon-btn">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <span class="material-icons">restore</span>
+                        <span>Restore Data</span>
+                        <button id="restore-btn" class="icon-btn">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <span class="material-icons">file_download</span>
+                        <span>Export CSV</span>
+                        <button id="export-csv-btn" class="icon-btn">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <span class="material-icons">budget</span>
+                        <span>Monthly Budget</span>
+                        <button id="budget-btn" class="icon-btn">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Expenses Screen -->
+        <div id="all-expenses-screen" class="screen">
+            <div class="glass-card expenses-card">
+                <div class="header">
+                    <button id="back-to-main-expenses" class="icon-btn">
+                        <span class="material-icons">arrow_back</span>
+                    </button>
+                    <h2>All Expenses</h2>
+                </div>
+                <div id="all-expenses-list" class="expenses-list">
+                    <!-- Expenses will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/chart.min.js"></script>
+    <script src="js/chart-fallback.js"></script>
+    <script src="js/dom-utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/expenses.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/popup.js"></script>
+    
+    <footer class="app-footer">
+        <p>Developed by Labib Bin Shahed</p>
+    </footer>
+</body>
+</html>

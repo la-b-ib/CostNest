@@ -1,0 +1,18 @@
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Nest/Shield shape -->
+  <path d="M12 2L3 7v10c0 5.55 3.84 9.74 9 9 5.16.74 9-3.45 9-9V7l-9-5z" fill="url(#grad1)" stroke="#fff" stroke-width="0.5"/>
+  
+  <!-- Dollar sign -->
+  <path d="M12 6v2m0 8v2m-1-9h2.5a1.5 1.5 0 0 1 0 3H12m0 0h2.5a1.5 1.5 0 0 1 0 3H11" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Decorative dots -->
+  <circle cx="8" cy="10" r="0.8" fill="rgba(255,255,255,0.6)"/>
+  <circle cx="16" cy="14" r="0.8" fill="rgba(255,255,255,0.6)"/>
+</svg>
